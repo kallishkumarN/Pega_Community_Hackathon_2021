@@ -1,0 +1,76 @@
+Train Algorithm
+  
+The Training of the yolo algorithm has various stages,such as 
+
+1) Cloning the github repository
+2) Removing the images stored in training and test images folder.
+2) Loading the custom dataset with labelled images into the training images folder
+3) Loading the test images dataset to the test images folder
+4) Specifying the tag names such as mask,non mask,social distance,no social distance
+5) Convert the image annotations to yolo format.
+6) Download the pretrained yolo weights to increase efficiency of prediction.
+7) Then train the algorithm.
+
+Cloning github repository
+
+Step1: Clone the github repository into the notebook.
+
+Step2: Change the directory to Content/TrainYourOwnYolo/Data/SourceImages
+
+Step3: Remove all three folders named Training_Images, Test_Images, Test_ Image _ Detection_Results 
+
+Step4: Recreate three folders with same name and save it.
+
+Step5: Upload the vott-csv-export folder which is the labelled images with Annotations_export.csv file 
+
+Step6: Upload the testing dataset to the Test_Images folder.
+
+Step7: Navigate to Model_Weights folder  and go to data_classes.txt and put the tage names as mask,no mask,social distance,no social distance.
+
+Step8: Navigate back to content/TrainYourOwnYolo directory.
+
+Training the Algorithm 
+
+Step1: Navigate back to /content/TrainYourOwnYolo directory.
+
+Step2: Change the directory to 2_Training folder.
+
+Step3: Download the pretrained yoloweights by running  the  python command  
+!python Download_and_Convert_YOLO_weights.py
+
+Step4: It takes some time to download the weights and then convert the weights to yolo format and applies the changes to the training dataset.
+
+Step5: After the command gets over,type the next pyton command to train the algorithm with provided training dataset.
+!python Train_YOLO.py
+
+Step6: Once the training gets complete,navigate  to TrainYourOwnYolo folder.
+
+
+
+
+https://blog.insightdatascience.com/how-to-train-your-own-yolov3-detector-from-scratch-224d10e55de2
+
+Convert Annotations to Yolo format
+
+Step1: Navigate back to /content/TrainYourOwnYolo directory
+ 
+Step2: Change the directory to 1_Image_Annotation 
+
+Step3: Run the python command as python Convert_to_YOLO_format.py
+
+Step4: The step3 would convert the annotations which are loaded in data folder to yolo format.
+https://blog.insightdatascience.com/how-to-train-your-own-yolov3-detector-from-scratch-224d10e55de2
+
+Test Algorithm
+
+The Algorithm is now tested for its accuracy of prediction and the learning rate and confidence score applied to the test results.
+
+Testing the Algorithm
+Step1: Navigate to 3_Inference folder
+
+Step2: Run the python command python Detector.py
+
+Step3: The Algorithm applies its learning rate,detects the learnt boxes over the predicted objects with the confidence score.
+
+Step4: The Algorithm's test results will be stored inside the Test_Image_Detection_Results folder.
+

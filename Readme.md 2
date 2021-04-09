@@ -1,0 +1,46 @@
+Tello SDK Commands:
+The first flow consists of the commands to be sent to the IBM tello drone,the node red flow for sending tello sdk commands have been imported.Here we first connect the drone with Wi-fi module using udp node.Then in order to handle the receiver messages we have kept an debug node to receive messages from the drone.
+   
+Then we send tello sdk commands using the tello drone nodes such as inject node and the drone nodes such as emergency,land,takeoff,rotate clockwise or anticlockwise etc.
+
+Tello Dashboard:
+	We then design an nodered dashboard for our tello drone flow.we create an template node and then we design the dashboard and all the tello sdk command nodes to the node red dashboard.
+
+Tello Telemetry Data:
+	The drone will send the telemetry data to the port 8890 udp port and then through that we can see the data sent by the drone which will be recieved and displayed in the dashboard.The parse status into an object willl parse the telemetry data to JSON format and then sends the output in the form of JSON object.The data sent by the drone are 
+
+➤pitch: the degree of the attitude pitch
+➤roll: the degree of the attitude roll
+➤yaw : the degree of the attitude yaw
+➤vgx : the speed of the “x” axis
+➤vgy : the speed of the “y” axis
+➤vgz : the speed of the “z” axis
+➤templ : the lowest temperature in degree Celsius
+➤temph : the highest temperature in degree Celsius
+➤tof : the time of flight distance in cm
+➤h : the height in cm
+➤bat : the percentage of the current battery level
+➤baro : the barometer measurement in cm
+➤time : the amount of time the motor has been used
+➤agx : the acceleration of the “x” axis
+➤agy : the acceleration of the “y” axis
+➤agz : the acceleration of the “z” axis
+
+     Then we design gauge nodes such as 
+➤Temp
+➤Barometer
+➤Accel X
+➤Accel Y
+➤Accel Z
+➤Speed X
+➤Speed Y
+➤Speed Z
+Then we add an chart node to display the height and a text node to display the flight time.
+Tello Missisons:
+	Here we design an mission for the tello drone such that it has to take off,descend 1.5 meters, rotate 360 degrees and make a square by moving forward 50cm,then rotate 90 degree and repeat it for 4 times and finally land.
+
+Tello Pictures:
+	we design an node red flow which uses an low level protocol which helps tello drone to take pictures and send them to the dashboard.
+
+Tello Visual Recognition:
+	Here we design the flow for embedding our visual recognition model into the node red flow of tello drone. We copy th API key of our visual recognition service and then we copy the api key to the visual recognition node.we replace our model id with default model and then we launch the dashboard and connect wifi and then take pictures and classify the objects.
